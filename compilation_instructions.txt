@@ -1,0 +1,2 @@
+module add languages/R-3.3.2-ATLAS
+R CMD SHLIB findSNP.cpp

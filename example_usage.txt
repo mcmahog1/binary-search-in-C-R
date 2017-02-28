@@ -1,0 +1,13 @@
+dyn.load("findSNP.so")
+
+mysnps <- read.table("/panfs/panasas01/sscm/epgmm/WP/collaboratorRequest/snpLists/B2769.snplist",h=F)
+mysnps <- gsub("rs","",mysnps[,1])
+
+x <- as.numeric(as.character(mysnps))
+y <- rep(0,length(x))
+n <- length(x)
+
+
+searchResults <-  .C("findSNP", x=x,y=y,n=n)
+which(searchResults$y == 0)
+
